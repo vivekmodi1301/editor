@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Video of the Above Project: 
+https://github.com/user-attachments/assets/513ef1c8-7106-4ff2-85a2-04186a0969e8
 
-## Getting Started
 
-First, run the development server:
+# React Sorcerer Take Home Test
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Assignment
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You need to create an editor using Draft.js within ReactJS with the following specifications:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- There are three main components in the layout: Title, Button and Editor
+    
+    ![assignment.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/89581388-a27d-4d56-8a46-15ebbde73839/assignment.png)
+    
+- The editor needs to be written in Draft.js
+    - Typing `#` as the first string in a line & pressing space should make anything you type afterwards on the same line be in a “Heading” format. On pressing space the aforementioned `#` should disappear.
+        - See “This is a heading” line in the layout image above.
+    - Similarly, typing `*` as the first string in a line and pressing space should correspond to “bold” format
+    - `**` and space = red line
+    - `***` and space = underline
+- Pressing `Save` button should persist everything typed in the editor into `localstorage`. On refreshing the page,  the saved info should be refilled into the editor.
