@@ -109,7 +109,7 @@ export default function Home() {
     const contentState = editorState.getCurrentContent();
     const rawContent = convertToRaw(contentState);
     localStorage.setItem('editorContent', JSON.stringify(rawContent));
-    alert('Saved to !');
+    alert('Saved to Local Storage !');
   };
 
   return (
