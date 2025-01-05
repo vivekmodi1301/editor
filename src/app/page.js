@@ -31,6 +31,174 @@ export default function Home() {
   };
 
   // Custom behavior on space key press
+  // const handleBeforeInput = (chars, editorState) => {
+  //   if (chars === " ") {
+  //     const currentContent = editorState.getCurrentContent();
+  //     const selection = editorState.getSelection();
+  //     const blockKey = selection.getStartKey();
+  //     const block = currentContent.getBlockForKey(blockKey);
+  //     const blockText = block.getText();
+
+  //     // Check if block starts with '#'
+  //     if (blockText.startsWith("#")) {
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(1).trim(), // Remove the '#' symbol
+  //       );
+
+  //       const newState = EditorState.push(editorState, contentState, "change-block-type");
+  //       const updatedState = RichUtils.toggleBlockType(newState, "header-one"); // Set block to heading
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     } 
+  //     else if (blockText.startsWith("***")) {
+  //       // Apply underline style
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(3).trim()
+  //       );
+  //       const newState = EditorState.push(editorState, contentState, "change-inline-style");
+  //       const updatedState = RichUtils.toggleInlineStyle(newState, "UNDERLINE");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     } 
+  //     else if (blockText.startsWith("**")) {
+  //       // Apply red color style
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(2).trim()
+  //       );
+  //       const newState = EditorState.push(editorState, contentState, "change-inline-style");
+  //       const updatedState = RichUtils.toggleInlineStyle(newState, "RED_TEXT");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     } 
+  //     else if (blockText.startsWith("*")) {
+  //       // Apply bold style
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(1).trim()
+  //       );
+  //       const newState = EditorState.push(editorState, contentState, "change-inline-style");
+  //       const updatedState = RichUtils.toggleInlineStyle(newState, "BOLD");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     }
+  //   }
+  //   return "not-handled";
+  // };
+
+  // const handleBeforeInput = (chars, editorState) => {
+  //   if (chars === " ") {
+  //     const currentContent = editorState.getCurrentContent();
+  //     const selection = editorState.getSelection();
+  //     const blockKey = selection.getStartKey();
+  //     const block = currentContent.getBlockForKey(blockKey);
+  //     const blockText = block.getText();
+  
+  //     // Remove conflicting inline styles
+  //     const clearInlineStyles = (state, stylesToRemove) => {
+  //       let newState = state;
+  //       stylesToRemove.forEach((style) => {
+  //         newState = RichUtils.toggleInlineStyle(newState, style);
+  //       });
+  //       return newState;
+  //     };
+  
+  //     // Handle block-level heading
+  //     if (blockText.startsWith("#")) {
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(1).trim() // Remove the '#' symbol
+  //       );
+  
+  //       const newState = EditorState.push(editorState, contentState, "change-block-type");
+  //       const updatedState = RichUtils.toggleBlockType(newState, "header-one");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     }
+  
+  //     // Handle underline style (***)
+  //     else if (blockText.startsWith("***")) {
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(3).trim() // Remove the '***' symbol
+  //       );
+  
+  //       // Clear conflicting styles and apply underline
+  //       const clearedState = clearInlineStyles(editorState, ["BOLD", "RED_TEXT"]);
+  //       const newState = EditorState.push(clearedState, contentState, "change-inline-style");
+  //       const updatedState = RichUtils.toggleInlineStyle(newState, "UNDERLINE");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     }
+  
+  //     // Handle red color style (**)
+  //     else if (blockText.startsWith("**")) {
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(2).trim() // Remove the '**' symbol
+  //       );
+  
+  //       // Clear conflicting styles and apply red text
+  //       const clearedState = clearInlineStyles(editorState, ["BOLD", "UNDERLINE"]);
+  //       const newState = EditorState.push(clearedState, contentState, "change-inline-style");
+  //       const updatedState = RichUtils.toggleInlineStyle(newState, "RED_TEXT");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     }
+  
+  //     // Handle bold style (*)
+  //     else if (blockText.startsWith("*")) {
+  //       const contentState = Modifier.replaceText(
+  //         currentContent,
+  //         selection.merge({
+  //           anchorOffset: 0,
+  //           focusOffset: blockText.length,
+  //         }),
+  //         blockText.slice(1).trim() // Remove the '*' symbol
+  //       );
+  
+  //       // Clear conflicting styles and apply bold
+  //       const clearedState = clearInlineStyles(editorState, ["RED_TEXT", "UNDERLINE"]);
+  //       const newState = EditorState.push(clearedState, contentState, "change-inline-style");
+  //       const updatedState = RichUtils.toggleInlineStyle(newState, "BOLD");
+  //       setEditorState(updatedState);
+  //       return "handled";
+  //     }
+  //   }
+  
+  //   return "not-handled";
+  // };
+  
   const handleBeforeInput = (chars, editorState) => {
     if (chars === " ") {
       const currentContent = editorState.getCurrentContent();
@@ -38,8 +206,22 @@ export default function Home() {
       const blockKey = selection.getStartKey();
       const block = currentContent.getBlockForKey(blockKey);
       const blockText = block.getText();
-
-      // Check if block starts with '#'
+  
+      // Utility to remove all inline styles
+      const clearAllInlineStyles = (state) => {
+        const styles = ["BOLD", "RED_TEXT", "UNDERLINE"];
+        let contentState = state.getCurrentContent();
+        const selection = state.getSelection();
+  
+        // Remove each style
+        styles.forEach((style) => {
+          contentState = Modifier.removeInlineStyle(contentState, selection, style);
+        });
+  
+        return EditorState.push(state, contentState, "change-inline-style");
+      };
+  
+      // Handle block-level heading
       if (blockText.startsWith("#")) {
         const contentState = Modifier.replaceText(
           currentContent,
@@ -47,62 +229,76 @@ export default function Home() {
             anchorOffset: 0,
             focusOffset: blockText.length,
           }),
-          blockText.slice(1).trim(), // Remove the '#' symbol
+          blockText.slice(1).trim() // Remove the '#' symbol
         );
-
+  
         const newState = EditorState.push(editorState, contentState, "change-block-type");
-        const updatedState = RichUtils.toggleBlockType(newState, "header-one"); // Set block to heading
+        const updatedState = RichUtils.toggleBlockType(newState, "header-one");
         setEditorState(updatedState);
         return "handled";
-      } 
+      }
+  
+      // Handle underline style (***)
       else if (blockText.startsWith("***")) {
-        // Apply underline style
         const contentState = Modifier.replaceText(
           currentContent,
           selection.merge({
             anchorOffset: 0,
             focusOffset: blockText.length,
           }),
-          blockText.slice(3).trim()
+          blockText.slice(3).trim() // Remove the '***' symbol
         );
-        const newState = EditorState.push(editorState, contentState, "change-inline-style");
+  
+        // Clear all styles and apply underline
+        const clearedState = clearAllInlineStyles(editorState);
+        const newState = EditorState.push(clearedState, contentState, "change-inline-style");
         const updatedState = RichUtils.toggleInlineStyle(newState, "UNDERLINE");
         setEditorState(updatedState);
         return "handled";
-      } 
+      }
+  
+      // Handle red color style (**)
       else if (blockText.startsWith("**")) {
-        // Apply red color style
         const contentState = Modifier.replaceText(
           currentContent,
           selection.merge({
             anchorOffset: 0,
             focusOffset: blockText.length,
           }),
-          blockText.slice(2).trim()
+          blockText.slice(2).trim() // Remove the '**' symbol
         );
-        const newState = EditorState.push(editorState, contentState, "change-inline-style");
+  
+        // Clear all styles and apply red text
+        const clearedState = clearAllInlineStyles(editorState);
+        const newState = EditorState.push(clearedState, contentState, "change-inline-style");
         const updatedState = RichUtils.toggleInlineStyle(newState, "RED_TEXT");
         setEditorState(updatedState);
         return "handled";
-      } 
+      }
+  
+      // Handle bold style (*)
       else if (blockText.startsWith("*")) {
-        // Apply bold style
         const contentState = Modifier.replaceText(
           currentContent,
           selection.merge({
             anchorOffset: 0,
             focusOffset: blockText.length,
           }),
-          blockText.slice(1).trim()
+          blockText.slice(1).trim() // Remove the '*' symbol
         );
-        const newState = EditorState.push(editorState, contentState, "change-inline-style");
+  
+        // Clear all styles and apply bold
+        const clearedState = clearAllInlineStyles(editorState);
+        const newState = EditorState.push(clearedState, contentState, "change-inline-style");
         const updatedState = RichUtils.toggleInlineStyle(newState, "BOLD");
         setEditorState(updatedState);
         return "handled";
       }
     }
+  
     return "not-handled";
   };
+  
 
   // Logs editor content to the console in raw format
   const handleButtonClick = () => {
